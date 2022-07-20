@@ -28,8 +28,8 @@ void _exibirDialogNaoExiste(BuildContext context){
 }
 
 Future _acionarDialog(BuildContext context) async{
-  final responseExiste = await UsuarioWs().usuarioExiste(login: login);
-  if(responseExiste.body=="true"){
+  bool responseExiste = await UsuarioWs().usuarioExiste(login: login);
+  if(responseExiste){
   _exibirDialogExiste(context);
   }else{
   _exibirDialogNaoExiste(context);
@@ -75,7 +75,9 @@ class _LoginState extends State<Login> {
                         color: Colors.black54
                     )),
                     Image(image: AssetImage('assets/images/rondley.png'),color: Colors.black54,width: 200,),
-                    Divider(),
+                    Divider(
+                      color: Colors.transparent,
+                    ),
                     TextField(
                       autofocus: true,
                       keyboardType: TextInputType.text,

@@ -1,9 +1,8 @@
 
-import 'dart:convert';
-
-
-import 'package:http/http.dart' as http;
-import 'ws/global.dart' as global;
+import 'package:webproject/login.dart';
+import 'package:webproject/screens/inicio.dart';
+import 'package:webproject/screens/servicos.dart';
+import 'package:webproject/screens/suporte.dart';
 import 'package:flutter/material.dart';
 import 'package:webproject/model/Usuario.dart';
 
@@ -24,26 +23,42 @@ class _HomeState extends State<Home> {
   }
 
   int _selectedIndex = 0;
+
+  Widget _selectTitle(){
+    if(_selectedIndex == 0){
+      return Text(
+        'Inicio',
+        style: optionStyle,
+      );
+    }else{
+      if(_selectedIndex == 1){
+        return Text(
+          'Serviços',
+          style: optionStyle,
+        );
+      }else{
+        return Text(
+          'Suporte',
+          style: optionStyle,
+        );
+      }
+    }
+  }
+
+
   static const TextStyle optionStyle =
   TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black45);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Inicio',
-      style: optionStyle,
-    ),
-    Text(
-      'Serviços',
-      style: optionStyle,
-    ),
-    Text(
-      'Suporte',
-      style: optionStyle,
-    ),
+
+  static List<Widget> _telasOptions = <Widget>[
+    Inicio(usuario!),
+    Servicos(),
+    Suporte(),
   ];
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      _selectTitle;
     });
   }
 
@@ -53,7 +68,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: _widgetOptions.elementAt(_selectedIndex),
+        title: _selectTitle(),
         actions: [
           IconButton(
             icon: const Icon(Icons.account_circle_rounded),
@@ -64,64 +79,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Stack(
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Divider(),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(24, 16, 16, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Olá, ',
-                          style: TextStyle(
-                            fontFamily: 'Outfit',
-                            color: Color(0xFF101213),
-                            fontSize: 37,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
-                          child: Text(
-                            widget.usuario.usuTxNome ?? '',
-                            style: TextStyle(
-                              fontFamily: 'Outfit',
-                              color: Color(0xFF4B39EF),
-                              fontSize: 37,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
-                    child: Text(
-                      'Olá! Seja bem vindo a página inicial do aplicativo.',
-                      style: TextStyle(
-                        fontFamily: 'Outfit',
-                        color: Color(0xFF57636C),
-                        fontSize: 17,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ),
-                ],
-              )
-
-            ],
-          )
-        ),
-      ),
+      body: _telasOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.black54,
         selectedItemColor: Color(0xFF4B39EF),

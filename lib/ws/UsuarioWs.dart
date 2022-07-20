@@ -24,14 +24,20 @@ class UsuarioWs{
    }
   }
 
-  Future<http.Response> usuarioExiste({required String login}) async{
+  Future<bool> usuarioExiste({required String login}) async{
     final queryParameters = {
       'usuTxLogin': '$login'
     };
     final urlExiste = Uri.http(global.url.replaceAll('http://', ''), '/api/usuario/usuByLoginExist', queryParameters);
     final responseExiste = await http.get(urlExiste, headers: header);
-    return responseExiste;
+    if (responseExiste.body.toLowerCase() == 'true') {
+      return true;
+    } else if (responseExiste.body.toLowerCase() == 'false') {
+      return false;
+    }
+    return false;
   }
+
 
 
 
