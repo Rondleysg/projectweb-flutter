@@ -1,9 +1,8 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:webproject/login.dart';
-import 'package:webproject/widgets/buttonElevated.dart';
+import 'package:splashscreen/splashscreen.dart';
+import 'package:webproject/screens/inicio_home.dart';
+import 'package:webproject/screens/screens_service/lista_usuarios.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +19,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
       ),
       home: MyHomePage(title: 'Inicio',),
-      //MyHomePage(title: 'Inicio',),
     );
   }
 }
@@ -38,84 +36,32 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called
-    final ButtonStyle style =
-    TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
+    final ButtonStyle style = TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
+    return _introScreen();
+  }
+}
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage('assets/images/bg.jpg'), fit: BoxFit.cover,),
-            ),
-          ),
-          Center(
-              child:
-                  Container(
-                    padding: const EdgeInsets.all(35),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Column(children: [
-                          Text('Bem-vindo', style: TextStyle(
-                              fontSize: 45,
-                              fontFamily: 'burbank-big',
-                              color: Colors.black54
-                          )),
-                          Divider(color: Colors.transparent,),
-                          Text('Aplicativo criado para matéria de Programação WEB I, autenticação e autorização consumindo api externa',
-                          style: TextStyle(color: Colors.black54,fontSize: 20, fontFamily: 'burbank-big-light', fontWeight: FontWeight.w900),
-                          textAlign: TextAlign.center,)
-                        ],),
-                        Divider(color: Colors.transparent,),
-                        Image(image: AssetImage('assets/images/rondley.png'),color: Colors.black54),
-                        Divider(color: Colors.transparent,),
-                        Column(children: [
-                          buttonElevated(callback: ()=>mostrarLogin(), text: "Login", style: new ButtonStyle(minimumSize: MaterialStateProperty.all(Size(200, 60)),),),
-                          Divider(color: Colors.transparent,),
-                          buttonElevated(callback: ()=>{}, text: "Cadastrar", style: new ButtonStyle(minimumSize: MaterialStateProperty.all(Size(200, 60))),),
-                        ],),
-                        Divider(color: Colors.transparent,),
-                        Divider(color: Colors.transparent,),
-                        Column(children: [
-                          Text("Outras formas de login", style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'burbank-big',
-                            color: Colors.black54,
-                          ), ),
-                          Divider(color: Colors.transparent,),
-                          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                            IconButton(onPressed: ()=>{}, icon: Icon(
-                              MdiIcons.facebook,
-                              size: 40,
-                            )),
-                            IconButton(onPressed: ()=>{}, icon: Icon(
-                              MdiIcons.twitter,
-                              size: 40,
-                            )),
-                            IconButton(onPressed: ()=>{}, icon: Icon(
-                              MdiIcons.google,
-                              size: 40,
-                            )),
-                          ],
-                          )
-                        ],),
-                      ],
-                    ),
-                  ),
-            )
-        ],
-      )
-    );
-  }
-  mostrarLogin(){
-    Future.delayed(Duration.zero, () {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => Login()));
-    });
-  }
+Widget _introScreen() {
+  return Stack(
+    children: <Widget>[
+      SplashScreen(
+        seconds: 5,
+        gradientBackground: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Colors.white24,
+            Colors.white
+          ],
+        ),
+        navigateAfterSeconds: InicioHome(),
+        loaderColor: Colors.transparent,
+      ),
+      Center(
+        child: Image(
+          image: AssetImage('assets/images/rondley.png'),color: Colors.black54,
+        ),
+      ),
+    ],
+  );
 }
