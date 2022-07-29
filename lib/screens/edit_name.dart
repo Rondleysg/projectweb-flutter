@@ -39,7 +39,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-              color: Colors.black), // set backbutton color here which will reflect in all screens.
+              color: Colors.black),
           leading: BackButton(),
           backgroundColor: Colors.transparent,
           elevation: 0,

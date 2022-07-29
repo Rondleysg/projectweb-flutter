@@ -23,8 +23,8 @@ class _PerfilState extends State<Perfil> {
         backgroundColor: Colors.transparent,
         leading: IconButton(
           onPressed: ()=>{
-          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-          builder: (context)=>Home(usuario!)),(Route<dynamic> route) => false)
+            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                builder: (context)=>Home(usuario!)),(Route<dynamic> route) => false)
           },
           icon: const Icon(Icons.arrow_back),
         ),
@@ -108,12 +108,10 @@ class _PerfilState extends State<Perfil> {
           ));
 
 
-  // Refrshes the Page after updating user info.
   Future onGoBack(dynamic value) async{
     setState(() {});
   }
 
-  // Handles navigation and prompts refresh.
   void navigateSecondPage(Widget editForm) {
     Route route = MaterialPageRoute(builder: (context) => editForm);
     Navigator.push(context, route).then(onGoBack);

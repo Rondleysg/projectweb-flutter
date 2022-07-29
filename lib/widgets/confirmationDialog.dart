@@ -9,16 +9,16 @@ class confirmationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-            title: Text(text),
-            content: Text(desc),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text('OK', style: TextStyle(color: Color(0xFF6200EE)),),
-              ),
-            ],
-          );
+      title: Text(text),
+      content: Text(desc),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text('OK', style: TextStyle(color: Color(0xFF6200EE)),),
+        ),
+      ],
+    );
   }
 }

@@ -22,81 +22,81 @@ class _PesquisarIdUsuarioScreenState extends State<PesquisarIdUsuario> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          appBar: AppBar(),
-          body: Column(
-                children: [
-                  Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-                        child: SizedBox(
-                            child: const Text(
-                              "Procurar usuário por id:",
-                              style: TextStyle(
-                                fontSize: 35,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )),),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Padding(
-                                padding: EdgeInsets.fromLTRB(0, 40, 16, 0),
-                                child: SizedBox(
-                                    height: 200,
-                                    width: 300,
-                                    child: TextFormField(
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Porfavor insira um id';
-                                        } else if (!isNumeric(value)) {
-                                          return 'Somente números';
-                                        }
-                                        return null;
-                                      },
-                                      decoration: InputDecoration(labelText: 'Id do usuário: ',labelStyle: TextStyle(
-                                        fontSize: 25,
-                                      )),
-                                      controller: idController,
-                                    ))),
-                          ],
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                  child: SizedBox(
+                      child: const Text(
+                        "Procurar usuário por id:",
+                        style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
                         ),
-                        Padding(
-                            padding: EdgeInsets.only(top: 50),
-                            child: Align(
-                                alignment: Alignment.bottomCenter,
-                                child: SizedBox(
-                                  width: 330,
-                                  height: 50,
-                                  child: ElevatedButton(
-                                    onPressed: () async{
-                                      if (_formKey.currentState!.validate() && isNumeric(idController.text)) {
-                                          usuProcurado = await _getUsuario(idController.text).then((value) {
-                                            if(value==null){
-                                              _exibirDialog(context);
-                                            }else{
-                                              Navigator.push(context, MaterialPageRoute(
-                                                  builder: (context)=>PageUsuarioPesquisa(usuProcurado: value)));
-                                            }
-                                          });
-                                      }
-                                    },
-                                    child: const Text(
-                                      'Buscar',
-                                      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                )))
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            );
+                      )),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                        padding: EdgeInsets.fromLTRB(0, 40, 16, 0),
+                        child: SizedBox(
+                            height: 200,
+                            width: 300,
+                            child: TextFormField(
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Porfavor insira um id';
+                                } else if (!isNumeric(value)) {
+                                  return 'Somente números';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(labelText: 'Id do usuário: ',labelStyle: TextStyle(
+                                fontSize: 25,
+                              )),
+                              controller: idController,
+                            ))),
+                  ],
+                ),
+                Padding(
+                    padding: EdgeInsets.only(top: 50),
+                    child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: SizedBox(
+                          width: 330,
+                          height: 50,
+                          child: ElevatedButton(
+                            onPressed: () async{
+                              if (_formKey.currentState!.validate() && isNumeric(idController.text)) {
+                                usuProcurado = await _getUsuario(idController.text).then((value) {
+                                  if(value==null){
+                                    _exibirDialog(context);
+                                  }else{
+                                    Navigator.push(context, MaterialPageRoute(
+                                        builder: (context)=>PageUsuarioPesquisa(usuProcurado: value)));
+                                  }
+                                });
+                              }
+                            },
+                            child: const Text(
+                              'Buscar',
+                              style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        )))
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
 
   }
 

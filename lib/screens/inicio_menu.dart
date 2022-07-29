@@ -11,14 +11,9 @@ class Inicio extends StatefulWidget {
   @override
   State<Inicio> createState() => _InicioState();
 
-  refreshNome() {
-    usuario.usuTxNome;
-  }
-
 }
 
 class _InicioState extends State<Inicio> {
-
 
   @override
   Widget build(BuildContext context) {
@@ -75,50 +70,50 @@ class _InicioState extends State<Inicio> {
                       ),
                     ),
                     Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
-                    child: Divider(
-                      color: Colors.black,
-                      thickness: 3,
-                    ),),
+                      child: Divider(
+                        color: Colors.black,
+                        thickness: 3,
+                      ),),
                     Padding(padding: EdgeInsetsDirectional.fromSTEB(24, 10, 24, 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                      Text('Últimos serviços utilizados:  ',
-                        style: TextStyle(
-                          fontFamily: 'Outfit',
-                          color: Color(0xFF101213),
-                          fontSize: 17,
-                        ),),
-                      Icon(Icons.cached, size: 25,),
-                    ],)
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Últimos serviços utilizados:  ',
+                              style: TextStyle(
+                                fontFamily: 'Outfit',
+                                color: Color(0xFF101213),
+                                fontSize: 17,
+                              ),),
+                            Icon(Icons.cached, size: 25,),
+                          ],)
                     ),
                     Padding(padding: EdgeInsetsDirectional.fromSTEB(24, 10, 24, 0),
-                    child: Center(
-                      child: Column(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: Icon(Icons.error_outline, size: 17),
-                                ),
-                                TextSpan(
-                                  text: "Você não utilizou nenhum serviço. ",
-                                  style: TextStyle(color: Colors.black, fontSize: 14,
-                                  fontWeight: FontWeight.w500)
-                                ),
-                              ],
+                      child: Center(
+                        child: Column(
+                          children: [
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  WidgetSpan(
+                                    child: Icon(Icons.error_outline, size: 17),
+                                  ),
+                                  TextSpan(
+                                      text: "Você não utilizou nenhum serviço. ",
+                                      style: TextStyle(color: Colors.black, fontSize: 14,
+                                          fontWeight: FontWeight.w500)
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          Text('Vá até a aba serviços e veja o que tem disponível!'),
-                          TextButton(onPressed: () => {}, child: Text('Ver todos',
-                          style: TextStyle(color: Color(0xFF4B39EF),
-                          fontSize: 17),
-                          )
-                          ),
-                        ],
+                            Text('Vá até a aba serviços e veja o que tem disponível!'),
+                            TextButton(onPressed: () => {}, child: Text('Ver todos',
+                              style: TextStyle(color: Color(0xFF4B39EF),
+                                  fontSize: 17),
+                            )
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
                     ),
                     Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                       child: Divider(
@@ -126,7 +121,7 @@ class _InicioState extends State<Inicio> {
                         thickness: 3,
                       ),),
                     Padding(padding: EdgeInsetsDirectional.fromSTEB(24, 60, 24, 0),
-                    child: Column(
+                      child: Column(
                         children: [
                           Text('Mais projetos em: ', style: TextStyle(
                               color: Color(0xFF101213),fontSize: 20),),
@@ -134,20 +129,20 @@ class _InicioState extends State<Inicio> {
                       ),
                     ),
                     Padding(padding: EdgeInsetsDirectional.fromSTEB(10, 10, 24, 0),
-                    child: SizedBox(
-                      height: 210,
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                          padding: EdgeInsets.all(12),
-                          itemBuilder: (context, index){
-                          return buildCard(index);
-                          },
-                          separatorBuilder: (context, index){
-                          return const SizedBox(width: 20,);
-                          },
-                          itemCount: 3
-                      ),
-                    )
+                        child: SizedBox(
+                          height: 210,
+                          child: ListView.separated(
+                              scrollDirection: Axis.horizontal,
+                              padding: EdgeInsets.all(12),
+                              itemBuilder: (context, index){
+                                return buildCard(index);
+                              },
+                              separatorBuilder: (context, index){
+                                return const SizedBox(width: 20,);
+                              },
+                              itemCount: 3
+                          ),
+                        )
                     )
                   ],
                 ),
@@ -188,14 +183,14 @@ class _InicioState extends State<Inicio> {
       child: Column(
         children: [
           Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 0, 75, 0),
-          child: IconButton(
-            onPressed: () async {
+            child: IconButton(
+              onPressed: () async {
                 if (!await launchUrl(linkBrowser)) {
                   throw 'Não foi possível abrir $linkBrowser';
                 }
-            },
-            icon: Icon(iconData, color: Colors.white, size: 110,),
-          ),),
+              },
+              icon: Icon(iconData, color: Colors.white, size: 110,),
+            ),),
           const SizedBox(height: 95,),
           Text(nomeOpcao, style: TextStyle(fontSize: 30,
               fontFamily: 'burbank-big-medium',
@@ -206,8 +201,4 @@ class _InicioState extends State<Inicio> {
     );
   }
 
-  @override
-  void setState(VoidCallback fn) {
-
-  }
 }

@@ -20,10 +20,10 @@ class _SuporteState extends State<Suporte> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(padding: EdgeInsetsDirectional.fromSTEB(34, 44, 100, 0),
-            child: Text('Suporte,', style: TextStyle(fontSize: 30,
-                fontWeight: FontWeight.bold, color: Color(0xFF4B39EF)),),),
+              child: Text('Suporte,', style: TextStyle(fontSize: 30,
+                  fontWeight: FontWeight.bold, color: Color(0xFF4B39EF)),),),
             Padding(padding: EdgeInsetsDirectional.fromSTEB(34, 10, 0, 0),
-            child: Text('Como podemos ajudar?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),)
+              child: Text('Como podemos ajudar?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),)
           ],
         ),
       ),

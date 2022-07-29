@@ -10,18 +10,18 @@ class UsuarioWs{
   };
 
   Future<Usuario?> autenticarUsuario({required String login, required String senha}) async{
-  var url = Uri.parse(global.url+'/login');
-  var body = jsonEncode({
-    "usuTxLogin": "$login",
-    "usuTxSenha": "$senha"
-  });
-  var response = await http.post(url, body: body, headers: header);
-  if(response.statusCode==200){
-    Usuario usuario = Usuario.fromJson(jsonDecode(response.body));
-    return usuario;
-  }else{
-   return null;
-   }
+    var url = Uri.parse(global.url+'/login');
+    var body = jsonEncode({
+      "usuTxLogin": "$login",
+      "usuTxSenha": "$senha"
+    });
+    var response = await http.post(url, body: body, headers: header);
+    if(response.statusCode==200){
+      Usuario usuario = Usuario.fromJson(jsonDecode(response.body));
+      return usuario;
+    }else{
+      return null;
+    }
   }
 
   Future<bool> usuarioExiste({required String login}) async{
@@ -110,7 +110,7 @@ class UsuarioWs{
       print('caindo aqui');
       return null;
     }
-}
+  }
 
   Future<Usuario?> getUsuarioId({required String token, required String id}) async{
     final queryParameters = {

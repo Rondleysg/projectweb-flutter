@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:webproject/model/Usuario.dart';
 import 'package:webproject/screens/login.dart';
@@ -59,64 +58,64 @@ class _CadastroState extends State<Cadastro> {
                         child: Column(
                           children: [
                             textFormCadastro(textValidator: 'Porfavor insira seu nome', controller: nomeController, hintText: 'Informe seu Nome',
-                                labelText: "Nome", onChanged: (String nometext) async {
+                              labelText: "Nome", onChanged: (String nometext) async {
                                 nome = nometext;
                               },),
                             textFormCadastro(textValidator: 'Porfavor insira um login', hintText: 'Informe o Login',
-                                labelText: "Login", onChanged: (String logintext) async {
+                              labelText: "Login", onChanged: (String logintext) async {
                                 login = logintext;
                               },),
                             textFormCadastro(hintText: 'Informe a Senha', labelText: "Senha",
-                                onChanged: (String senhatext) async {
-                                  senha = senhatext;
-                                },),
+                              onChanged: (String senhatext) async {
+                                senha = senhatext;
+                              },),
                             textFormCadastro(textValidator: 'Senhas diferentes', controller: senhaController, hintText: 'Confirme sua Senha',
-                                labelText: "Confirmar Senha", onChanged: (String senha2text) async {
+                              labelText: "Confirmar Senha", onChanged: (String senha2text) async {
                               },),
                           ],
                         ),),),
 
                       Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                         child: ButtonTheme(
-                          materialTapTargetSize: MaterialTapTargetSize.padded,
-                          child: Column(
-                            children: [
-                              ElevatedButton(onPressed: () async {
-                                if(_formKey.currentState!.validate()){
-                                usuario = await UsuarioWs().criarConta(nome: nome, login: login, senha: senha);
-                                if(usuario!=null){
-                                  _cadastroSucesso(context);
-                                }else{
-                                  _acionarDialog(context);
-                                }}else{
-                                }
-                              },
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(Colors.black26),
-                                    elevation: MaterialStateProperty.all(5),
-                                    minimumSize: MaterialStateProperty.all(Size(150, 60))),
-                                child: Text(
-                                  "Cadastrar",
-                                  style: TextStyle(color: Colors.black45, fontSize: 50, fontFamily: 'burbank-big', fontWeight: FontWeight.normal),
+                            materialTapTargetSize: MaterialTapTargetSize.padded,
+                            child: Column(
+                              children: [
+                                ElevatedButton(onPressed: () async {
+                                  if(_formKey.currentState!.validate()){
+                                    usuario = await UsuarioWs().criarConta(nome: nome, login: login, senha: senha);
+                                    if(usuario!=null){
+                                      _cadastroSucesso(context);
+                                    }else{
+                                      _acionarDialog(context);
+                                    }}else{
+                                  }
+                                },
+                                  style: ButtonStyle(
+                                      backgroundColor: MaterialStateProperty.all(Colors.black26),
+                                      elevation: MaterialStateProperty.all(5),
+                                      minimumSize: MaterialStateProperty.all(Size(150, 60))),
+                                  child: Text(
+                                    "Cadastrar",
+                                    style: TextStyle(color: Colors.black45, fontSize: 50, fontFamily: 'burbank-big', fontWeight: FontWeight.normal),
+                                  ),
                                 ),
-                              ),
-                              Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('Já tem uma conta? ',style: TextStyle(
-                                      fontSize: 20
-                                  ),),
-                                  TextButton(onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => Login())) , child: Text('Login',style: TextStyle(
-                                      fontSize: 20,
-                                      color: Color(0xFF4B39EF),
-                                      fontWeight: FontWeight.bold
-                                  ),))
-                                ],
-                              ),)
-                            ],
-                          )
-                      ),),
+                                Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text('Já tem uma conta? ',style: TextStyle(
+                                          fontSize: 20
+                                      ),),
+                                      TextButton(onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => Login())) , child: Text('Login',style: TextStyle(
+                                          fontSize: 20,
+                                          color: Color(0xFF4B39EF),
+                                          fontWeight: FontWeight.bold
+                                      ),))
+                                    ],
+                                  ),)
+                              ],
+                            )
+                        ),),
                     ],
                   ),
                 ),
@@ -162,12 +161,12 @@ void _cadastroSucesso(BuildContext context){
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-            title: Text('Cadastro Realizado!!'),
-            content: Text('Seu cadastro foi realizado com sucesso.'),
+          title: Text('Cadastro Realizado!!'),
+          content: Text('Seu cadastro foi realizado com sucesso.'),
           actions: [
             TextButton(onPressed: ()=>{
-            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-            builder: (context)=>Login()),(Route<dynamic> route) => false)
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                  builder: (context)=>Login()),(Route<dynamic> route) => false)
             }, child: Text('OK'))
           ],
         );

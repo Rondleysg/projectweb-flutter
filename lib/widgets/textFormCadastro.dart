@@ -6,7 +6,7 @@ class textFormCadastro extends StatelessWidget {
   final controller = TextEditingController();
   final Function(String)? onChanged;
   textFormCadastro({Key? key, String? this.textValidator, TextEditingController? controller,
-  required String this.hintText, required String this.labelText, required Function(String)? this.onChanged}): super(key: key);
+    required String this.hintText, required String this.labelText, required Function(String)? this.onChanged}): super(key: key);
 
   @override
   Widget build(BuildContext context) {

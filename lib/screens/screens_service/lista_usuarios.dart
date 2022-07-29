@@ -17,7 +17,7 @@ class _ListaUsuariosScreenState extends State<ListaUsuarios> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _getListUsuarios(),
+        future: _getListUsuarios(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Center(
@@ -68,7 +68,7 @@ class _ListaUsuariosScreenState extends State<ListaUsuarios> {
                                             height: 5,
                                           ),
                                           Text("Data criação:: " +
-                                                usuList![index].usuDtCadastro!,
+                                              usuList![index].usuDtCadastro!,
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w500),

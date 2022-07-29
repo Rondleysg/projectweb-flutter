@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:webproject/screens/inicio_home.dart';
-import 'package:webproject/screens/screens_service/lista_usuarios.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +35,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     return _introScreen();
   }
 }

@@ -17,21 +17,21 @@ Usuario? usuario;
 
 void _exibirDialogNaoExiste(BuildContext context){
   showDialog(
-    context: context,
-    builder: (BuildContext context){
-      return confirmationDialog(
-          text: 'Login inexistente!',
-          desc: 'Erro ao fazer login: Login não existe.');
-    }
+      context: context,
+      builder: (BuildContext context){
+        return confirmationDialog(
+            text: 'Login inexistente!',
+            desc: 'Erro ao fazer login: Login não existe.');
+      }
   );
 }
 
 Future _acionarDialog(BuildContext context) async{
   bool responseExiste = await UsuarioWs().usuarioExiste(login: login);
   if(responseExiste){
-  _exibirDialogExiste(context);
+    _exibirDialogExiste(context);
   }else{
-  _exibirDialogNaoExiste(context);
+    _exibirDialogNaoExiste(context);
   }
 }
 
@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //resizeToAvoidBottomInset: false,
+      //resizeToAvoidBottomInset: false,
         body: Stack(
           children: <Widget>[
             Container(
@@ -91,11 +91,11 @@ class _LoginState extends State<Login> {
                             borderRadius: BorderRadius.all(Radius.circular(10.0)),
                             borderSide: BorderSide(color: Colors.black26),
                           ),
-                        prefixIcon: Icon(Icons.person),
-                        hintText: 'Informe o Login',
-                        hintStyle: TextStyle(fontSize: 25),
-                        labelText: "Login",
-                        labelStyle: TextStyle(color: Colors.black, fontSize: 30)
+                          prefixIcon: Icon(Icons.person),
+                          hintText: 'Informe o Login',
+                          hintStyle: TextStyle(fontSize: 25),
+                          labelText: "Login",
+                          labelStyle: TextStyle(color: Colors.black, fontSize: 30)
                       ),
                       onChanged: (String logintext) async {
                         login = logintext;
