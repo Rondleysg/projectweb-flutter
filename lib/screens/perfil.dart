@@ -3,7 +3,7 @@ import 'package:webproject/model/Usuario.dart';
 import 'package:webproject/screens/edit_name.dart';
 import 'package:webproject/screens/home.dart';
 import 'package:webproject/screens/login.dart';
-import 'package:webproject/widgets/display_image_widget.dart';
+import 'package:webproject/widgets/DisplayImage.dart';
 
 class Perfil extends StatefulWidget {
 

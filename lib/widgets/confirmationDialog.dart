@@ -6,7 +6,6 @@ class confirmationDialog extends StatelessWidget {
 
   confirmationDialog({required this.text, required this.desc});
 
-
   @override
   Widget build(BuildContext context) {
     return AlertDialog(

@@ -13,10 +13,6 @@ class ListaUsuarios extends StatefulWidget {
 
 class _ListaUsuariosScreenState extends State<ListaUsuarios> {
   List<Usuario>? usuList;
-  List<String> usuImage=[];
-  @override
-  void initState() {
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +48,7 @@ class _ListaUsuariosScreenState extends State<ListaUsuarios> {
                                       height: 100,
                                       width: 100,
                                       image: NetworkImage(
-                                          usuImage[index].toString()),
+                                          'https://igd-wp-uploads-pluginaws.s3.amazonaws.com/wp-content/uploads/2016/05/30105213/Qual-e%CC%81-o-Perfil-do-Empreendedor.jpg'),
                                     ),
                                     SizedBox(
                                       width: 10,
@@ -71,8 +67,7 @@ class _ListaUsuariosScreenState extends State<ListaUsuarios> {
                                           SizedBox(
                                             height: 5,
                                           ),
-                                          Text(
-                                            "Data criação:: " +
+                                          Text("Data criação:: " +
                                                 usuList![index].usuDtCadastro!,
                                             style: TextStyle(
                                                 fontSize: 16,
@@ -123,9 +118,6 @@ class _ListaUsuariosScreenState extends State<ListaUsuarios> {
 
   Future<List<Usuario>?> _getListUsuarios() async{
     usuList = await UsuarioWs().getListaTodosUsuarios(token: widget.usuario.usuTxToken!);
-    for(int i=0; i<usuList!.length; i++){
-      usuImage.add('https://igd-wp-uploads-pluginaws.s3.amazonaws.com/wp-content/uploads/2016/05/30105213/Qual-e%CC%81-o-Perfil-do-Empreendedor.jpg');
-    }
     return usuList;
   }
 

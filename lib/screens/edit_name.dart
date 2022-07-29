@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webproject/model/Usuario.dart';
 import 'package:webproject/screens/login.dart';
-import 'package:webproject/widgets/appbar_widget.dart';
 import 'package:string_validator/string_validator.dart';
 import 'package:webproject/ws/UsuarioWs.dart';
 
@@ -30,7 +29,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
     super.dispose();
   }
 
-  void updateUserValue(String name) {
+  void updateUserName(String name) {
     user?.usuTxNome = name;
   }
 
@@ -38,7 +37,13 @@ class EditNameFormPageState extends State<EditNameFormPage> {
   Widget build(BuildContext context) {
     //List<String> nomeCompleto=widget.usuario.usuTxNome!.split(' ');
     return Scaffold(
-        appBar: buildAppBar(context),
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+              color: Colors.black), // set backbutton color here which will reflect in all screens.
+          leading: BackButton(),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
         body: Form(
           key: _formKey,
           child: Column(
@@ -82,7 +87,6 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                           height: 100,
                           width: 150,
                           child: TextFormField(
-                            // Handles Form Validation for Last Name
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Porfavor insira seu segundo nome';
@@ -107,7 +111,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                         child: ElevatedButton(
                           onPressed: () async{
                             if (_formKey.currentState!.validate() && isAlpha(firstNameController.text + secondNameController.text)) {
-                              updateUserValue(firstNameController.text +
+                              updateUserName(firstNameController.text +
                                   " " +
                                   secondNameController.text);
                               UsuarioWs().salvarNome(novoNome: firstNameController.text + " " + secondNameController.text,

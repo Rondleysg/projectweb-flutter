@@ -112,5 +112,43 @@ class UsuarioWs{
     }
 }
 
+  Future<Usuario?> getUsuarioId({required String token, required String id}) async{
+    final queryParameters = {
+      'usuNrId': '$id'
+    };
+    final url = Uri.http(global.url.replaceAll('http://', ''), '/api/usuario/usuById', queryParameters);
+    final response = await http.get(url, headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
+    });
+
+    if(response.statusCode==200){
+      Usuario usuario = Usuario.fromJson(jsonDecode(response.body));
+      return usuario;
+    }else{
+      return null;
+    }
+  }
+
+  Future<Usuario?> getUsuarioLogin({required String token, required String login}) async{
+    final queryParameters = {
+      'usuTxLogin': '$login'
+    };
+    final url = Uri.http(global.url.replaceAll('http://', ''), '/api/usuario/usuByLogin', queryParameters);
+    final response = await http.get(url, headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
+    });
+
+    if(response.statusCode==200){
+      Usuario usuario = Usuario.fromJson(jsonDecode(response.body));
+      return usuario;
+    }else{
+      return null;
+    }
+  }
+
 
 }
